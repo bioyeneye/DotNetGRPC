@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Protos\authentication.proto" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Protos\authentication.proto" GrpcServices="Server" />
+		<Protobuf Include="Protos\notification.proto" GrpcServices="Server" />
+		<!--C# runtime library for Protocol Buffers-->
+		<PackageReference Include="Google.Protobuf" Version="3.17.3" />
+
+		<!--gRPC meta-package for ASP.NET Core-->
+		<PackageReference Include="Grpc.AspNetCore" Version="2.38.0" />
+
+		<!--Automatic discovery of services for Grpc.Reflection-->
+		<PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.38.0" />
+
+		<!--C# implementation of gRPC based on native gRPC C-core library.Managed runtime-->
+		<PackageReference Include="Grpc.Core" Version="2.38.1" />
+		<!--contains the compilers to compile proto files to code-->
+		<PackageReference Include="Grpc.Tools" Version="2.38.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Grpc.HttpApi" Version="0.1.0-alpha.21317.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Grpc.Swagger" Version="0.1.0-alpha.21317.5" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Protos\notification.proto" GrpcServices="Server" />
+		<Protobuf Include="Protos\authentication.proto" GrpcServices="Server" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Protos\notification.proto">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Protos\authentication.proto">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

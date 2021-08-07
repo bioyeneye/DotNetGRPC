@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcNotificationService.Protos";
+
+package authenticator;
+
+import "Protos/google/api/annotations.proto";
+
+service Notifier {
+	rpc Notify(NotifierRequest) returns (NotifierResponse){
+		option (google.api.http) = {
+			post: "/v1/notifier"
+			body: "*"
+		};
+	};
+}
+
+message NotifierRequest {
+	string service = 1;
+	string body = 2;
+	string title = 3;
+}
+
+message NotifierResponse {
+	string response = 1;
+}
